@@ -47,10 +47,6 @@ Next ab
 End If
 End If
 
-Range("U29").Select
-s6
-Selection.Copy
-s6
 粘贴总数据
  
     MsgBox "粘贴完成"
@@ -93,6 +89,9 @@ AppActivate "Excel"
  ActiveSheet.PasteSpecial Format:="HTML", Link:=False, DisplayAsIcon:= _
         False, NoHTMLFormatting:=True
     s6
+    
+    Application.CutCopyMode = False
+    
     ActiveCell.Offset(30, 0).Select
     
         ActiveCell.Range("A1:F30").Select
@@ -120,6 +119,9 @@ s6
 AppActivate "Excel"
     ActiveSheet.PasteSpecial Format:="HTML", Link:=False, DisplayAsIcon:= _
         False, NoHTMLFormatting:=True
+        
+    Application.CutCopyMode = False
+        
     ActiveCell.Offset(30, 0).Select
     
             ActiveCell.Range("A1:F30").Select
@@ -147,6 +149,9 @@ s6
 AppActivate "Excel"
     ActiveSheet.PasteSpecial Format:="HTML", Link:=False, DisplayAsIcon:= _
         False, NoHTMLFormatting:=True
+        
+        Application.CutCopyMode = False
+        
     ActiveCell.Offset(30, 0).Select
     
     ActiveWindow.ScrollRow = 1
@@ -198,6 +203,9 @@ AppActivate "Excel"
 
  ActiveSheet.PasteSpecial Format:="HTML", Link:=False, DisplayAsIcon:= _
         False, NoHTMLFormatting:=True
+        
+        Application.CutCopyMode = False
+        
     s6
         ActiveCell.Offset(0, 2).Select
         
@@ -242,6 +250,7 @@ AppActivate "Excel"
 s6
     ActiveSheet.PasteSpecial Format:="HTML", Link:=False, DisplayAsIcon:= _
         False, NoHTMLFormatting:=True
+        Application.CutCopyMode = False
     ActiveCell.Offset(0, 2).Select
 
 SendKeys "{NUMLOCK}"
@@ -308,8 +317,13 @@ AppActivate "Excel"
 
  ActiveSheet.PasteSpecial Format:="HTML", Link:=False, DisplayAsIcon:= _
         False, NoHTMLFormatting:=True
+        
+        Application.CutCopyMode = False
+        
     s6
         ActiveCell.Offset(0, 2).Select
         
 
 End Sub
+
+
