@@ -11,8 +11,8 @@ Range("A29").Select
 
 分别粘贴
 Dim we
-we = Range("I20").Value
-If we = 1 Then
+we = Range("U8").Value
+If we = 2 Then
 Dim awe
 For awe = 1 To 6 Step 1
 循环
@@ -325,5 +325,7 @@ AppActivate "Excel"
         
 
 End Sub
+
+
 
 
