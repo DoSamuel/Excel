@@ -242,25 +242,6 @@ Range("O293").Value = p
             
     End If
             
-Dim wk As Integer
-
-wk = Range("H330").Value
-
-If wk = 1 Then
-
-Sheets("源数据").Select
-Range("U8").Value = 2
-Range("U9").Value = 2
-Range("U10").Value = 1
-ActiveSheet.Previous.Select
-ActiveSheet.Previous.Select
-
-Else
-Sheets("源数据").Select
-Range("U8").Value = 1
-Range("U9").Value = 1
-Range("U10").Value = 1
-ActiveSheet.Previous.Select
-ActiveSheet.Previous.Select
-End If
 End Sub
+
+
