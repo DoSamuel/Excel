@@ -39,7 +39,7 @@ For a = 1 To 9 Step 1
 Next a
 ActiveCell.Offset(0, 7).Select
 Dim ab
-For ab = 1 To 5 Step 1
+For ab = 1 To 1 Step 1
 
 循环2
 
@@ -48,6 +48,8 @@ End If
 End If
 
 粘贴总数据
+
+Range("A1").Select
  
     MsgBox "粘贴完成"
     
@@ -72,13 +74,15 @@ AppActivate "Google Chrome"
 s6
 SendKeys "{F5}"
 s6
+s6
+s6
 SendKeys "{tab}"
 SendKeys "+{tab}"
 s6
 SendKeys "^a"
 SendKeys "^v"
 SendKeys "{enter}"
-s2
+s4
 SendKeys "^a"
 SendKeys "^c"
 s6
@@ -290,8 +294,9 @@ Private Sub s6() '暂停0.3秒，期间可以进行其他操作
     '后面的代码
 End Sub
 Private Sub 循环2()
-
-ActiveCell.Offset(1, 0).Range("A1:B599").Select
+Range("AB29").Select
+ActiveCell.Offset(1, 0).Range("A1:J599").Select
+Selection.NumberFormatLocal = "G/通用格式"
     Selection.ClearContents
     ActiveCell.Offset(-1, 0).Range("A1").Select
     
@@ -301,12 +306,30 @@ ActiveCell.Offset(1, 0).Range("A1:B599").Select
     ActiveCell.Offset(1, 0).Range("A1").Select
 AppActivate "Google Chrome"
 s6
+SendKeys "{F5}"
+s6
+s6
+s6
+s6
 SendKeys "{tab}"
 SendKeys "+{tab}"
 s6
 SendKeys "^a"
 SendKeys "^v"
 SendKeys "{enter}"
+s4
+
+Dim ae
+For ae = 1 To 6 Step 1
+
+SendKeys "{tab}"
+Next ae
+s6
+SendKeys "{Enter}"
+s6
+SendKeys "{Down}"
+s6
+SendKeys "{Enter}"
 s2
 SendKeys "^a"
 SendKeys "^c"
@@ -321,11 +344,10 @@ AppActivate "Excel"
         Application.CutCopyMode = False
         
     s6
-        ActiveCell.Offset(0, 2).Select
+Range("A1").Select
         
 
 End Sub
-
 
 
 
