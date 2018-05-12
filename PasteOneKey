@@ -1,55 +1,72 @@
-# Excel
-Excel test
 
+    Public Declare PtrSafe Function OpenClipboard Lib "user32" (ByVal hwnd As LongPtr) As Long
+    Public Declare PtrSafe Function CloseClipboard Lib "user32" () As Long
+    Public Declare PtrSafe Function EmptyClipboard Lib "user32" () As Long
+
+ 
+Private Sub CE()
+    Dim lngRet As Long
+     
+    lngRet = OpenClipboard(Application.hwnd)
+     
+    If lngRet Then
+        EmptyClipboard
+        CloseClipboard
+    End If
+End Sub
 
 Private Sub 一键粘贴()
 Range("A29").Select
 
-    Range("A29:AK628").Select
+    Range("A29:AS628").Select
     Selection.NumberFormatLocal = "G/通用格式"
     Range("A29").Select
 
 分别粘贴
-Dim we
-we = Range("U8").Value
-If we = 2 Then
-Dim awe
-For awe = 1 To 6 Step 1
-循环
-Next awe
-ActiveCell.Offset(0, 4).Select
-循环
+
+Dim u8, u9, t8, re As Integer
+
+    u8 = Range("P4").Value
+    u9 = Range("P5").Value
+    t8 = Range("O4").Value
+
+If t8 = 1 Then
+    For re = 1 To 14 Step 1
+    循环
+    Next re
 Else
-Dim ti
-ti = Range("I21").Value
-If ti = 1 Then
-Dim ati
-For ati = 1 To 6 Step 1
-循环
-Next ati
-ActiveCell.Offset(0, 4).Select
-循环
-Else
-
-Dim a
-For a = 1 To 9 Step 1
-
-循环
-
-Next a
-ActiveCell.Offset(0, 7).Select
-Dim ab
-For ab = 1 To 1 Step 1
-
-循环2
-
-Next ab
-End If
+    If u8 = 2 Then
+        If u9 = 2 Then
+            For re = 1 To 14 Step 1
+            循环
+            Next re
+        Else
+            For re = 1 To 14 Step 1
+            循环
+            Next re
+            ActiveCell.Offset(0, 2).Select
+            For re = 1 To 3 Step 1
+            循环
+            Next re
+        End If
+    Else
+        If u9 = 2 Then
+            For re = 1 To 15 Step 1
+            循环
+            Next re
+            循环2
+        Else
+            For re = 1 To 18 Step 1
+            循环
+            Next re
+            循环2
+        End If
+    End If
 End If
 
 粘贴总数据
 
-Range("A1").Select
+Range("B2").Select
  
     MsgBox "粘贴完成"
     
@@ -59,15 +76,14 @@ Private Sub 粘贴总数据()
 '
 ' 粘贴总数据 宏
 '
-Range("U29").Select
+Range("AM29").Select
 '
 Dim b As Integer
 
     ActiveCell.Range("A1:F30").Select
     Selection.ClearContents
     ActiveCell.Select
-            ActiveCell.Offset(-1, 0).Range("A1").Select
-    Application.CutCopyMode = False
+    ActiveCell.Offset(-1, 0).Range("A1").Select
     Selection.Copy
     ActiveCell.Offset(1, 0).Range("A1").Select
 AppActivate "Google Chrome"
@@ -90,23 +106,18 @@ SendKeys "{NUMLOCK}"
 
 AppActivate "Excel"
 
- ActiveSheet.PasteSpecial Format:="HTML", Link:=False, DisplayAsIcon:= _
+ActiveSheet.PasteSpecial Format:="HTML", Link:=False, DisplayAsIcon:= _
         False, NoHTMLFormatting:=True
-    s6
+s6
     
-    Application.CutCopyMode = False
-    
+CE
+
     ActiveCell.Offset(30, 0).Select
     
         ActiveCell.Range("A1:F30").Select
     Selection.ClearContents
     ActiveCell.Select
-            ActiveCell.Offset(0, 6).Range("A1").Select
-    Application.CutCopyMode = False
-    Selection.Copy
-    ActiveCell.Offset(0, -6).Range("A1").Select
-    ActiveWindow.ScrollColumn = 1
-    
+
 AppActivate "Google Chrome"
 s6
 
@@ -124,18 +135,13 @@ AppActivate "Excel"
     ActiveSheet.PasteSpecial Format:="HTML", Link:=False, DisplayAsIcon:= _
         False, NoHTMLFormatting:=True
         
-    Application.CutCopyMode = False
+CE
         
     ActiveCell.Offset(30, 0).Select
     
             ActiveCell.Range("A1:F30").Select
     Selection.ClearContents
     ActiveCell.Select
-            ActiveCell.Offset(0, 6).Range("A1").Select
-    Application.CutCopyMode = False
-    Selection.Copy
-    ActiveCell.Offset(0, -6).Range("A1").Select
-    ActiveWindow.ScrollColumn = 1
     
 AppActivate "Google Chrome"
 s6
@@ -154,11 +160,11 @@ AppActivate "Excel"
     ActiveSheet.PasteSpecial Format:="HTML", Link:=False, DisplayAsIcon:= _
         False, NoHTMLFormatting:=True
         
-        Application.CutCopyMode = False
+CE
         
     ActiveCell.Offset(30, 0).Select
     
-    ActiveWindow.ScrollRow = 1
+    Range("A1").Select
     
     SendKeys "{NUMLOCK}"
 
@@ -171,11 +177,15 @@ Private Sub 复制总数据()
 '
 
 '
-    Range("B2:H21").Select
+muban
+
+ActiveWorkbook.Save
+
+    Range("B2:J22").Select
     Selection.Copy
-    Range("K2").Select
-    ActiveSheet.Previous.Select
-    ActiveSheet.Previous.Select
+    Range("M2").Select
+    s6
+AppActivate "商家服务数据时段播报 - Excel"
 
 End Sub
 
@@ -186,7 +196,7 @@ ActiveCell.Offset(1, 0).Range("A1:B599").Select
     ActiveCell.Offset(-1, 0).Range("A1").Select
     
         ActiveCell.Offset(-1, 0).Range("A1").Select
-    Application.CutCopyMode = False
+
     Selection.Copy
     ActiveCell.Offset(1, 0).Range("A1").Select
 AppActivate "Google Chrome"
@@ -208,7 +218,7 @@ AppActivate "Excel"
  ActiveSheet.PasteSpecial Format:="HTML", Link:=False, DisplayAsIcon:= _
         False, NoHTMLFormatting:=True
         
-        Application.CutCopyMode = False
+CE
         
     s6
         ActiveCell.Offset(0, 2).Select
@@ -223,14 +233,13 @@ col = Selection.Column
 row = Selection.row
 
 If row = 29 Then
-If col = 1 Or col = 3 Or col = 5 Or col = 7 Or col = 9 Or col = 11 Or col = 13 Or col = 15 Or col = 17 Or col = 19 Or col = 28 Or col = 30 Or col = 32 Or col = 34 Or col = 36 Then
 
     ActiveCell.Offset(1, 0).Range("A1:B599").Select
     Selection.ClearContents
     ActiveCell.Offset(-1, 0).Range("A1").Select
     
         ActiveCell.Offset(-1, 0).Range("A1").Select
-    Application.CutCopyMode = False
+
     Selection.Copy
     ActiveCell.Offset(1, 0).Range("A1").Select
     
@@ -254,13 +263,10 @@ AppActivate "Excel"
 s6
     ActiveSheet.PasteSpecial Format:="HTML", Link:=False, DisplayAsIcon:= _
         False, NoHTMLFormatting:=True
-        Application.CutCopyMode = False
+CE
     ActiveCell.Offset(0, 2).Select
 
 SendKeys "{NUMLOCK}"
-Else
-MsgBox "请移动到绿色区域"
-End If
 Else
 MsgBox "请移动到绿色区域"
 End If
@@ -294,14 +300,14 @@ Private Sub s6() '暂停0.3秒，期间可以进行其他操作
     '后面的代码
 End Sub
 Private Sub 循环2()
-Range("AB29").Select
+Range("AT29").Select
 ActiveCell.Offset(1, 0).Range("A1:J599").Select
 Selection.NumberFormatLocal = "G/通用格式"
     Selection.ClearContents
     ActiveCell.Offset(-1, 0).Range("A1").Select
     
         ActiveCell.Offset(-1, 0).Range("A1").Select
-    Application.CutCopyMode = False
+
     Selection.Copy
     ActiveCell.Offset(1, 0).Range("A1").Select
 AppActivate "Google Chrome"
@@ -341,7 +347,7 @@ AppActivate "Excel"
  ActiveSheet.PasteSpecial Format:="HTML", Link:=False, DisplayAsIcon:= _
         False, NoHTMLFormatting:=True
         
-        Application.CutCopyMode = False
+CE
         
     s6
 Range("A1").Select
@@ -349,5 +355,33 @@ Range("A1").Select
 
 End Sub
 
+Private Sub muban()
+'
+' muban 宏
+'
 
+'
+    Range("B1:B22").Select
+    Selection.Copy
+    ActiveSheet.Previous.Select
+    Range("A264").Select
+    Selection.End(xlToRight).Select
+    ActiveCell.Offset(0, 1).Range("A1").Select
+    Selection.End(xlUp).Select
+        Dim c1
+    c1 = Selection.row
+        If c1 = 1 Then
+
+    ActiveSheet.Paste
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        Else
+        
+    ActiveCell.Offset(1, 0).Range("A1").Select
+    ActiveSheet.Paste
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        End If
+        ActiveSheet.Next.Select
+End Sub
 
