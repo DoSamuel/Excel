@@ -5,6 +5,7 @@
 
  
 Private Sub CE()
+
     Dim lngRet As Long
      
     lngRet = OpenClipboard(Application.hwnd)
@@ -18,7 +19,7 @@ End Sub
 Private Sub 一键粘贴()
 Range("A29").Select
 
-    Range("A29:AS628").Select
+    Range("A29:AS999").Select
     Selection.NumberFormatLocal = "G/通用格式"
     Range("A29").Select
 
@@ -69,13 +70,18 @@ End If
 Range("B2").Select
  
     MsgBox "粘贴完成"
-    
-    
+
 End Sub
 Private Sub 粘贴总数据()
 '
+startt:
+
 ' 粘贴总数据 宏
 '
+
+On Error Resume Next
+
+
 Range("AM29").Select
 '
 Dim b As Integer
@@ -129,7 +135,7 @@ SendKeys "{enter}"
 s2
 SendKeys "^a"
 SendKeys "^c"
-SendKeys "{F5}"
+
 s6
 AppActivate "Excel"
     ActiveSheet.PasteSpecial Format:="HTML", Link:=False, DisplayAsIcon:= _
@@ -146,7 +152,7 @@ CE
 AppActivate "Google Chrome"
 s6
 
-For b = 1 To 22 Step 1
+For b = 1 To 3 Step 1
 
 SendKeys "{tab}"
 Next b
@@ -167,6 +173,11 @@ CE
     Range("A1").Select
     
     SendKeys "{NUMLOCK}"
+
+If Err.Number > 0 Then
+Err.Clear
+GoTo startt
+End If
 
     
 End Sub
@@ -190,15 +201,17 @@ AppActivate "商家服务数据时段播报 - Excel"
 End Sub
 
 Private Sub 循环()
+line2:
+On Error Resume Next
 
-ActiveCell.Offset(1, 0).Range("A1:B599").Select
+ActiveCell.Offset(1, 0).Range("A1:B971").Select
     Selection.ClearContents
     ActiveCell.Offset(-1, 0).Range("A1").Select
     
         ActiveCell.Offset(-1, 0).Range("A1").Select
-
     Selection.Copy
     ActiveCell.Offset(1, 0).Range("A1").Select
+
 AppActivate "Google Chrome"
 s6
 SendKeys "{tab}"
@@ -207,7 +220,7 @@ s6
 SendKeys "^a"
 SendKeys "^v"
 SendKeys "{enter}"
-s2
+s4
 SendKeys "^a"
 SendKeys "^c"
 s6
@@ -217,12 +230,14 @@ AppActivate "Excel"
 
  ActiveSheet.PasteSpecial Format:="HTML", Link:=False, DisplayAsIcon:= _
         False, NoHTMLFormatting:=True
-        
+
 CE
-        
+If Err.Number > 0 Then
+Err.Clear
+GoTo line2
+End If
     s6
         ActiveCell.Offset(0, 2).Select
-        
 
 End Sub
 Private Sub 分别粘贴()
@@ -233,8 +248,8 @@ col = Selection.Column
 row = Selection.row
 
 If row = 29 Then
-
-    ActiveCell.Offset(1, 0).Range("A1:B599").Select
+line1:
+    ActiveCell.Offset(1, 0).Range("A1:B971").Select
     Selection.ClearContents
     ActiveCell.Offset(-1, 0).Range("A1").Select
     
@@ -242,7 +257,9 @@ If row = 29 Then
 
     Selection.Copy
     ActiveCell.Offset(1, 0).Range("A1").Select
-    
+
+On Error Resume Next
+
 AppActivate "Google Chrome"
 s6
 SendKeys "{F5}"
@@ -253,9 +270,8 @@ s6
 SendKeys "^a"
 SendKeys "^v"
 SendKeys "{enter}"
-s2
+s4
 SendKeys "^a"
-s6
 SendKeys "^c"
 SendKeys "{F5}"
 s6
@@ -264,6 +280,11 @@ s6
     ActiveSheet.PasteSpecial Format:="HTML", Link:=False, DisplayAsIcon:= _
         False, NoHTMLFormatting:=True
 CE
+If Err.Number > 0 Then
+Err.Clear
+GoTo line1
+End If
+
     ActiveCell.Offset(0, 2).Select
 
 SendKeys "{NUMLOCK}"
@@ -286,7 +307,7 @@ End Sub
 Private Sub s2() '暂停2秒，期间可以进行其他操作
     '前面的代码
     t = Timer
-    While Timer < t + 1.5
+    While Timer < t + 2
         DoEvents
     Wend
     '后面的代码
@@ -300,6 +321,9 @@ Private Sub s6() '暂停0.3秒，期间可以进行其他操作
     '后面的代码
 End Sub
 Private Sub 循环2()
+first:
+On Error Resume Next
+
 Range("AT29").Select
 ActiveCell.Offset(1, 0).Range("A1:J599").Select
 Selection.NumberFormatLocal = "G/通用格式"
@@ -323,7 +347,7 @@ s6
 SendKeys "^a"
 SendKeys "^v"
 SendKeys "{enter}"
-s4
+s2
 
 Dim ae
 For ae = 1 To 6 Step 1
@@ -336,7 +360,9 @@ s6
 SendKeys "{Down}"
 s6
 SendKeys "{Enter}"
-s2
+s6
+s6
+s6
 SendKeys "^a"
 SendKeys "^c"
 s6
@@ -352,6 +378,12 @@ CE
     s6
 Range("A1").Select
         
+If Err.Number > 0 Or Range("M20").Value = 0 Then
+Err.Clear
+GoTo first
+End If
+
+
 
 End Sub
 
@@ -384,4 +416,7 @@ Private Sub muban()
         End If
         ActiveSheet.Next.Select
 End Sub
+
+
+
 
