@@ -67,6 +67,10 @@ End If
 
 粘贴总数据
 
+Range("A29").Select
+
+分别粘贴
+
 Range("B2").Select
  
     MsgBox "粘贴完成"
@@ -94,14 +98,7 @@ Dim b As Integer
     ActiveCell.Offset(1, 0).Range("A1").Select
 AppActivate "Google Chrome"
 s6
-SendKeys "{F5}"
-s6
-s6
-s6
-SendKeys "{tab}"
-SendKeys "+{tab}"
-s6
-SendKeys "^a"
+SendKeys "^t"
 SendKeys "^v"
 SendKeys "{enter}"
 s4
@@ -160,8 +157,8 @@ SendKeys "{enter}"
 s2
 SendKeys "^a"
 SendKeys "^c"
-SendKeys "{F5}"
 s6
+SendKeys "^w"
 AppActivate "Excel"
     ActiveSheet.PasteSpecial Format:="HTML", Link:=False, DisplayAsIcon:= _
         False, NoHTMLFormatting:=True
@@ -174,7 +171,7 @@ CE
     
     SendKeys "{NUMLOCK}"
 
-If Err.Number > 0 Then
+If Err.Number > 0 Or Range("B4") = "#N/A" Then
 Err.Clear
 GoTo startt
 End If
@@ -214,16 +211,14 @@ ActiveCell.Offset(1, 0).Range("A1:B971").Select
 
 AppActivate "Google Chrome"
 s6
-SendKeys "{tab}"
-SendKeys "+{tab}"
-s6
-SendKeys "^a"
+SendKeys "^t"
 SendKeys "^v"
 SendKeys "{enter}"
 s4
 SendKeys "^a"
 SendKeys "^c"
 s6
+SendKeys "^w"
 SendKeys "{NUMLOCK}"
 
 AppActivate "Excel"
@@ -262,19 +257,14 @@ On Error Resume Next
 
 AppActivate "Google Chrome"
 s6
-SendKeys "{F5}"
-s2
-SendKeys "{tab}"
-SendKeys "+{tab}"
-s6
-SendKeys "^a"
+SendKeys "^t"
 SendKeys "^v"
 SendKeys "{enter}"
 s4
 SendKeys "^a"
 SendKeys "^c"
-SendKeys "{F5}"
 s6
+SendKeys "^w"
 AppActivate "Excel"
 s6
     ActiveSheet.PasteSpecial Format:="HTML", Link:=False, DisplayAsIcon:= _
@@ -336,15 +326,7 @@ Selection.NumberFormatLocal = "G/通用格式"
     ActiveCell.Offset(1, 0).Range("A1").Select
 AppActivate "Google Chrome"
 s6
-SendKeys "{F5}"
-s6
-s6
-s6
-s6
-SendKeys "{tab}"
-SendKeys "+{tab}"
-s6
-SendKeys "^a"
+SendKeys "^t"
 SendKeys "^v"
 SendKeys "{enter}"
 s2
@@ -362,10 +344,10 @@ s6
 SendKeys "{Enter}"
 s6
 s6
-s6
 SendKeys "^a"
 SendKeys "^c"
 s6
+SendKeys "^w"
 SendKeys "{NUMLOCK}"
 
 AppActivate "Excel"
@@ -378,7 +360,7 @@ CE
     s6
 Range("A1").Select
         
-If Err.Number > 0 Or Range("M20").Value = 0 Then
+If Err.Number > 0 Or Range("AT41").Value = 0 Then
 Err.Clear
 GoTo first
 End If
